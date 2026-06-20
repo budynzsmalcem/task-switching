@@ -17,47 +17,43 @@ def load_config(file_name="config.yaml"):
         config = yaml.safe_load(yaml_file)
     return config
 
-# na wypadek braku pliku yaml (albo jakiegokolwiek problemu)
-try:
-    _config_defaults = load_config()
-except Exception:
-    _config_defaults = {}
+
+_config_defaults = load_config()
+
 
 win = visual.Window(
-    size=[1024, 768],
-    fullscr=False,
-    color='black',
-    units='pix',
-    checkTiming=False
+    size=_config_defaults["screen_size"],
+    fullscr=_config_defaults["fullscr"],
+    color=_config_defaults["screen_color"],
+    units=_config_defaults["unit"],
+    checkTiming=_config_defaults["checkTiming"]
 )
 kb = keyboard.Keyboard()
 
-COLOR_BLUE = '#44EDFF'
-COLOR_GREEN = '#E2FF55'
+stim_bc = visual.Circle(win, radius=_config_defaults["circle_radius_1"], fillColor=_config_defaults["circle_color_1"], lineColor=None)
+stim_gc = visual.Circle(win, radius=_config_defaults["circle_radius_2"], fillColor=_config_defaults["circle_color_2"], lineColor=None)
 
-stim_bc = visual.Circle(win, radius=60, fillColor=COLOR_BLUE, lineColor=None)
-stim_gc = visual.Circle(win, radius=60, fillColor=COLOR_GREEN, lineColor=None)
-
-stim_bs = visual.Rect(win, width=120, height=120, fillColor=COLOR_BLUE, lineColor=None)
-stim_gs = visual.Rect(win, width=120, height=120, fillColor=COLOR_GREEN, lineColor=None)
+stim_bs = visual.Rect(win, width=_config_defaults["square_size_1"], height=_config_defaults["square_size_1"], fillColor=_config_defaults["square_color_1"], lineColor=None)
+stim_gs = visual.Rect(win, width=_config_defaults["square_size_2"], height=_config_defaults["square_size_2"], fillColor=_config_defaults["square_color_2"], lineColor=None)
 
 stim_list = [stim_bc, stim_gc, stim_bs, stim_gs]
-# Poprawne odpowiedzi
+
 #Punkt fiksacji (biały krzyżyk)
 fixation = visual.TextStim(win, text='+', color='white', height=20)
 
 #  Wskazówki
-cue_bg = visual.Rect(win, width=200, height=80, fillColor='#DEDEDE', lineColor='#B0B0B0', lineWidth=6)
-cue_text_color = visual.TextStim(win, text='KOLOR', color='black', height=32, bold=True)
-cue_text_shape = visual.TextStim(win, text='KSZTAŁT', color='black', height=32, bold=True)
+cue_bg = visual.Rect(win, width=_config_defaults["cue_bg_width"], height=_config_defaults["cue_bg_height]", fillColor=_config_defaults["cue_bg_fillColor"], lineColor=_config_defaults["cue_bg_lineColor"], lineWidth=_config_defaults["cue_bg_lineWidth"])
+cue_text_color = visual.TextStim(win, text='KOLOR', color=_config_defaults["cue_text_color_text_color"], height=_config_defaults["cue_text_color_height"], bold=_config_defaults["cue_text_color_isBold"])
+cue_text_shape = visual.TextStim(win, text='KSZTAŁT', color=_config_defaults["cue_text_shape_text_color"], height=_config_defaults["cue_text_shape_height"], bold=_config_defaults["cue_shape_color_isBold"])
 
-#  Feedback (nie wiem tu mam propozycje czata zeby feedback byl tekstem, ale nie wiem, mozna przerobic na jpg)
+#  Feedback 
 feedback_correct = visual.TextStim(win, text='✓', color='grey', height=100)
 feedback_incorrect = visual.TextStim(win, text='✗', color='grey', height=100)
 feedback_timeout = visual.TextStim(win, text='ZA WOLNO', color='grey', height=40)
 
-answers_color = {stim_bc: "k", stim_gc: "d", stim_bs: "k", stim_gs: "d"}
-answers_shape = {stim_bc: "d", stim_gc: "d", stim_bs: "k", stim_gs: "k"}
+# Poprawne odpowiedzi
+answers_color = {stim_bc: _config_defaults["key_2"], stim_gc: _config_defaults["key_1"], stim_bs: _config_defaults["key_2"], stim_gs: _config_defaults["key_1"]}
+answers_shape = {stim_bc: _config_defaults["key_1"], stim_gc: _config_defaults["key_1"], stim_bs: _config_defaults["key_2"], stim_gs: _config_defaults["key_2"]}
 
 
 # funkcja wyświetlająca instrukcje z pliku .txt
@@ -184,8 +180,8 @@ def make_stim_list(n,# n - liczba bodźców do wygenerowania
 
 
 def check_correct(stim, trial_type, focus_time,
-                  reaction_time=_config_defaults.get('reaction_time', 1500),
-                  cue_time=_config_defaults.get('cue_time', 600)):
+                  reaction_time=_config_defaults.get('reaction_time'),
+                  cue_time=_config_defaults.get('cue_time')):
     kb.clearEvents()
 
     fixation.draw()
@@ -382,15 +378,11 @@ def testing_run_mixed(n, results):
 # Wyświetlenie instrukcji
 
 def trial(single_training_n=None, single_trial_n=None, mixed_training_n=None, mixed_trial_n=None):
-    try:
-        config = load_config()
-    except Exception:
-        config = {}
 
-    if single_training_n is None: single_training_n = config.get('single_training_n', 5)
-    if single_trial_n is None: single_trial_n = config.get('single_trial_n', 25)
-    if mixed_training_n is None: mixed_training_n = config.get('mixed_training_n', 15)
-    if mixed_trial_n is None: mixed_trial_n = config.get('mixed_trial_n', 125)
+    if single_training_n is None: single_training_n = _config_defaults.get('single_training_n', 5)
+    if single_trial_n is None: single_trial_n = _config_defaults.get('single_trial_n', 25)
+    if mixed_training_n is None: mixed_training_n = _config_defaults.get('mixed_training_n', 15)
+    if mixed_trial_n is None: mixed_trial_n =_config_defaults.get('mixed_trial_n', 125)
 
     results = []
 
