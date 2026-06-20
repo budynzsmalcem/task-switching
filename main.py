@@ -1,15 +1,7 @@
-import os
-import pandas as pd
 from psychopy import visual, core
 from psychopy.hardware import keyboard
-import random
-import functions import *
 
-global_trial_number = 0
-answered = False
-correct_answer = False
-rt = None
-response_key = None
+import bodzce1feedback import trial
 
 if __name__ == "__main__":
     trial()
