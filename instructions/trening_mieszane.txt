@@ -1,0 +1,3 @@
+Część treningowa - ZADANIE MIESZANE.
+Przed bodźcem pojawi się wskazówka "KOLOR" lub "KSZTAŁT". Musisz zareagować na wskazaną cechę, ignorując drugą.
+Naciśnij SPACJĘ, żeby kontynuować.

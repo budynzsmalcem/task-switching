@@ -1,0 +1,5 @@
+Dzień dobry! W tym badaniu Twoim zadaniem jest identyfikacja koloru lub kształtu prezentowanego bodźca wzrokowego.
+Klawisz D (lewą ręką) - zielony kolor / koło.
+Klawisz K (prawą ręką) - niebieski kolor / kwadrat.
+Masz odpowiadać jak najszybciej, na udzielenie odpowiedzi masz 1500 ms.
+Naciśnij SPACJĘ, aby rozpocząć.
