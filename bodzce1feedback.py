@@ -13,6 +13,7 @@ def load_config(file_name="config.yaml"):
         config = yaml.safe_load(yaml_file)
     return config
 
+_config_defaults = load_config()
 
 win = visual.Window(
     size=_config_defaults["screen_size"],
