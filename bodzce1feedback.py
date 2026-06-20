@@ -364,16 +364,16 @@ def testing_run_mixed(n, results):
 
 # Wyświetlenie instrukcji
 
-def trial(single_training_n = load_config(),
+def trial(single_training_n = _config_defaults["single_training_n"],
           # ilość bodźców wyświetlanych podczas treningu kolor i treningu kształt
           # (z load_config)
-          single_trial_n = load_config(),
+          single_trial_n = _config_defaults["single_trial_n"],
           # ilość bodźców wyświetlanych podczas próby kolor i próby kształt
           # (z load_config)
-          mixed_training_n = load_config(),
+          mixed_training_n = _config_defaults[" mixed_training_n"],
           # ilość bodźców wyświetlanych podczas treningu mieszanego
           # (z load_config)
-          mixed_trial_n = load_config()):
+          mixed_trial_n = _config_defaults[" mixed_trial_n"]):
           # ilość bodźców wyświetlanych podczas próby mieszanej
           # (z load_config)
 
