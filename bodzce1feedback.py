@@ -8,6 +8,10 @@ import random
 global_trial_number = 0
 
 # Załadowanie ustawień z pliku .yaml: funkcja load_config
+def load_config(file_name="config.yaml"):
+    with open(file_name, encoding="utf-8") as yaml_file:
+        config = yaml.safe_load(yaml_file)
+    return config
 
 
 win = visual.Window(
