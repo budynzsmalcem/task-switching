@@ -160,8 +160,8 @@ def make_stim_list(n,# n - liczba bodźców do wygenerowania
 
 
 #def check_correct(stim, #stim - rodzaj bodźca
-                  trial_type, # trial_type - typ próby (shape/color)
-                  focus_time,  # focus_time - czas wyświetlania punktu fiksacji
+                 # trial_type, # trial_type - typ próby (shape/color)
+                  #focus_time,  # focus_time - czas wyświetlania punktu fiksacji
                   # (losowany),
 
                   #zadane, nie będziemy ich zmieniać
@@ -212,8 +212,16 @@ def check_correct(stim, trial_type, focus_time, reaction_time=1500, cue_time=600
                 correct_answer = False
                 response_key = None
                 rt = None
+    return {
+        "answered": answered,
+        "correct_answer": correct_answer,
+        "rt": rt,
+        "response_key": response_key
+    }
 
-    # Czekamy na odpowiedź przez zadany czas (reaction_time)
+
+
+# Czekamy na odpowiedź przez zadany czas (reaction_time)
 
     # Funkcja zwraca zmienne:
     # answered - czy odpowiedź została udzielona (True/False)
