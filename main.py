@@ -39,7 +39,7 @@ stim_gs = visual.Rect(win, width=_config_defaults["square_size_2"], height=_conf
 stim_list = [stim_bc, stim_gc, stim_bs, stim_gs]
 
 #Punkt fiksacji (biały krzyżyk)
-fixation = visual.TextStim(win, text='+', color='white', height=20)
+fixation = visual.TextStim(win, text='+', color=_config_defaults["fixation_point_color"], height = _config_defaults["fixation_point_height"])
 
 #  Wskazówki
 cue_bg = visual.Rect(win, width=_config_defaults["cue_bg_width"], height=_config_defaults["cue_bg_height]", fillColor=_config_defaults["cue_bg_fillColor"], lineColor=_config_defaults["cue_bg_lineColor"], lineWidth=_config_defaults["cue_bg_lineWidth"])
@@ -47,9 +47,9 @@ cue_text_color = visual.TextStim(win, text='KOLOR', color=_config_defaults["cue_
 cue_text_shape = visual.TextStim(win, text='KSZTAŁT', color=_config_defaults["cue_text_shape_text_color"], height=_config_defaults["cue_text_shape_height"], bold=_config_defaults["cue_shape_color_isBold"])
 
 #  Feedback 
-feedback_correct = visual.TextStim(win, text='✓', color='grey', height=100)
-feedback_incorrect = visual.TextStim(win, text='✗', color='grey', height=100)
-feedback_timeout = visual.TextStim(win, text='ZA WOLNO', color='grey', height=40)
+feedback_correct = visual.TextStim(win, text='✓', color=_config_defaults["feedback_correct_color"], height=_config_defaults["feedback_correct_height"])
+feedback_incorrect = visual.TextStim(win, text='✗', color=_config_defaults["feedback_incorrect_color"], height=_config_defaults["feedback_incorrect_height"])
+feedback_timeout = visual.TextStim(win, text='ZA WOLNO', color=_config_defaults["feedback_timeout_color"], height=_config_defaults["feedback_timeout_height"])
 
 # Poprawne odpowiedzi
 answers_color = {stim_bc: _config_defaults["key_2"], stim_gc: _config_defaults["key_1"], stim_bs: _config_defaults["key_2"], stim_gs: _config_defaults["key_1"]}
